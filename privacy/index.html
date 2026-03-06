@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Calistic</title>
+<meta name="description" content="Calistic Privacy Policy - how we collect, use, and safeguard your information.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0010;
+    --red: #ba0000;
+    --red-bright: #e01010;
+    --white: #ffffff;
+    --off-white: rgba(255,255,255,0.88);
+    --dim: rgba(255,255,255,0.45);
+    --dimmer: rgba(255,255,255,0.22);
+    --border: rgba(255,255,255,0.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .bg-layer {
+    position: fixed; inset: 0; z-index: 0;
+    background: linear-gradient(175deg, #5a0010 0%, #2d000e 35%, #0d0018 70%, #060010 100%);
+  }
+  .bg-layer::after {
+    content: ''; position: absolute;
+    top: -120px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 500px;
+    background: radial-gradient(ellipse, rgba(186,0,0,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .page { position: relative; z-index: 1; }
+  .container { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+
+  nav {
+    padding: 28px 0;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 2px;
+    color: var(--white); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    font-size: 13px; font-weight: 700;
+    color: var(--dim); text-decoration: none;
+    letter-spacing: 0.5px; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  .privacy {
+    padding: 60px 0 100px;
+    animation: fadeUp 0.5s ease-out;
+  }
+  .privacy h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px; letter-spacing: 2px; margin-bottom: 8px;
+  }
+  .privacy .updated {
+    font-size: 12px; color: var(--dim); margin-bottom: 40px;
+  }
+  .privacy h2 {
+    font-size: 17px; font-weight: 700;
+    margin: 32px 0 12px; color: var(--white);
+  }
+  .privacy p {
+    font-size: 14px; color: var(--off-white);
+    line-height: 1.85; margin-bottom: 14px;
+  }
+  .privacy ul {
+    list-style: none; padding: 0; margin-bottom: 14px;
+  }
+  .privacy li {
+    font-size: 14px; color: var(--off-white);
+    line-height: 1.85; padding-left: 20px; position: relative;
+  }
+  .privacy li::before {
+    content: '•'; position: absolute; left: 0;
+    color: var(--red-bright);
+  }
+  .privacy a { color: var(--red-bright); text-decoration: none; }
+  .privacy a:hover { text-decoration: underline; }
+
+  footer {
+    padding: 40px 0; text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  footer .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 2px; margin-bottom: 8px;
+  }
+  footer p { font-size: 12px; color: var(--dimmer); }
+  footer .footer-links {
+    margin-top: 12px; display: flex;
+    justify-content: center; gap: 20px;
+  }
+  footer .footer-links a {
+    font-size: 12px; color: var(--dim);
+    text-decoration: none; transition: color 0.2s;
+  }
+  footer .footer-links a:hover { color: var(--white); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .privacy { padding: 40px 0 60px; }
+    .privacy h1 { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+
+<div class="page">
+  <div class="container">
+
+    <nav>
+      <a href="/" class="nav-logo">CALISTIC</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/privacy">Privacy Policy</a>
+      </div>
+    </nav>
+
+    <section class="privacy">
+      <h1>PRIVACY POLICY</h1>
+      <p class="updated">Last updated: March 2026</p>
+
+      <h2>Introduction</h2>
+      <p>Calistic ("we", "our", "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use the Calistic mobile application.</p>
+
+      <h2>Information We Collect</h2>
+      <p>When you use Calistic, we may collect the following information:</p>
+      <ul>
+        <li>Your name and email address (when you sign in with Apple or create an account)</li>
+        <li>Your Apple user identifier (a unique, anonymous ID provided by Apple)</li>
+        <li>Workout data including exercise type, reps completed, session duration, and cards drawn</li>
+        <li>App usage data such as game mode preferences and feature interactions</li>
+      </ul>
+
+      <h2>How We Use Your Information</h2>
+      <p>We use the information we collect to:</p>
+      <ul>
+        <li>Provide and maintain the Calistic app experience</li>
+        <li>Track your workout progress and statistics</li>
+        <li>Display your position on the worldwide leaderboard</li>
+        <li>Send weekly challenge notifications (if opted in)</li>
+        <li>Improve the app based on usage patterns</li>
+      </ul>
+
+      <h2>Sign in with Apple</h2>
+      <p>We support Sign in with Apple as our primary authentication method. Apple provides us with a unique identifier and, at your discretion, your name and email address. You may choose to hide your email using Apple's private relay service. We respect this choice and will communicate with you through the relay address if provided.</p>
+
+      <h2>Data Storage</h2>
+      <p>Your workout data and statistics are stored locally on your device using standard iOS storage mechanisms. We do not currently transmit your personal workout data to external servers. Leaderboard data, when available, is stored securely on our servers with industry-standard encryption.</p>
+
+      <h2>Data Sharing</h2>
+      <p>We do not sell, trade, or rent your personal information to third parties. We may share anonymized, aggregated data for analytical purposes, but this data cannot be used to identify you personally.</p>
+
+      <h2>Your Rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Access the personal data we hold about you</li>
+        <li>Request deletion of your account and all associated data</li>
+        <li>Opt out of marketing communications at any time</li>
+        <li>Revoke Sign in with Apple access through your Apple ID settings</li>
+      </ul>
+
+      <h2>Account Deletion</h2>
+      <p>You can delete your account and all associated data at any time through the app's Profile → Account → Delete Account option. This action is permanent and cannot be undone. All workout history, statistics, and personal information will be erased.</p>
+
+      <h2>Children's Privacy</h2>
+      <p>Calistic is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child under 13, please contact us so we can promptly remove it.</p>
+
+      <h2>Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated "Last updated" date. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+
+      <h2>Contact Us</h2>
+      <p>If you have questions about this Privacy Policy or your personal data, please contact us at: <a href="mailto:privacy@calisticapp.com">privacy@calisticapp.com</a></p>
+    </section>
+
+    <footer>
+      <div class="footer-logo">CALISTIC</div>
+      <p>© 2026 Calistic. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="mailto:privacy@calisticapp.com">Contact</a>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+</body>
+</html>
