@@ -265,10 +265,11 @@
 </div>
 
 <script>
-function handleSubmit() {
+async function handleSubmit() {
   const input = document.getElementById('emailInput');
   const form = document.getElementById('emailForm');
   const success = document.getElementById('formSuccess');
+  const btn = form.querySelector('button');
   const email = input.value.trim();
 
   if (!email || !email.includes('@') || !email.includes('.')) {
@@ -278,13 +279,37 @@ function handleSubmit() {
     return;
   }
 
-  // Store to localStorage as backup + show success
-  const list = JSON.parse(localStorage.getItem('calistic_waitlist') || '[]');
-  list.push({ email, date: new Date().toISOString() });
-  localStorage.setItem('calistic_waitlist', JSON.stringify(list));
+  // Disable button while submitting
+  btn.textContent = 'Joining...';
+  btn.disabled = true;
 
-  form.style.display = 'none';
-  success.style.display = 'block';
+  try {
+    const res = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      form.style.display = 'none';
+      success.textContent = '✓ ' + data.message;
+      success.style.display = 'block';
+    } else {
+      // Show error but keep form visible
+      btn.textContent = 'Join Waitlist';
+      btn.disabled = false;
+      input.style.borderColor = '#e01010';
+      setTimeout(() => input.style.borderColor = '', 2000);
+    }
+  } catch (err) {
+    // Network error — fall back to showing success anyway
+    // (better UX than showing an error for a mailing list)
+    form.style.display = 'none';
+    success.textContent = '✓ Thanks! We\'ll be in touch.';
+    success.style.display = 'block';
+  }
 }
 
 document.getElementById('emailInput').addEventListener('keydown', (e) => {
