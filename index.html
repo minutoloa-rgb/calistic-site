@@ -6,7 +6,6 @@
 <title>Calistic — Train Like You Play</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 <style>
   :root {
     --bg: #0d0010;
@@ -488,7 +487,7 @@
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 function handleSubmit() {
   const input = document.getElementById('emailInput');
   const form = document.getElementById('emailForm');
@@ -502,8 +501,22 @@ function handleSubmit() {
     return;
   }
 
-  // Hide form, show success
-  // In production, replace this with your actual mailing list API call
-  // e.g., Mailchimp, ConvertKit, Buttondown, etc.
-  form.style.display = 'none';
-  success.style
+  // Call Buttondown API via serverless function
+  fetch('/api/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  })
+  .then(res => res.json())
+  .then(data => {
+    form.style.display = 'none';
+    success.style.display = 'block';
+  })
+  .catch(err => {
+    form.style.display = 'none';
+    success.style.display = 'block';
+  });
+}
+</script>
+</body>
+</html>
