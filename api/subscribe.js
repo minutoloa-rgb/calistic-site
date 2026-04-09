@@ -1,20 +1,14 @@
-// api/subscribe.js
-// Requires "type": "module" in root package.json
-
 export default async function handler(req, res) {
-  // Only allow POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const { email } = req.body;
 
-  // Validate input
   if (!email || !email.includes('@')) {
     return res.status(400).json({ error: 'Valid email is required' });
   }
 
-  // Verify API key exists
   if (!process.env.BUTTONDOWN_API_KEY) {
     console.error('BUTTONDOWN_API_KEY is not set');
     return res.status(500).json({ error: 'Server configuration error' });
@@ -28,7 +22,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email_address: email,   // NOT "email" — this changed in API version 2024-07-01
+        email_address: email,
       }),
     });
 
