@@ -1,3 +1,6 @@
+// api/subscribe.js
+// Requires "type": "module" in root package.json
+
 export default async function handler(req, res) {
   // Only allow POST
   if (req.method !== 'POST') {
@@ -6,9 +9,15 @@ export default async function handler(req, res) {
 
   const { email } = req.body;
 
-  // Basic validation
-  if (!email || !email.includes('@') || !email.includes('.')) {
-    return res.status(400).json({ error: 'Invalid email address' });
+  // Validate input
+  if (!email || !email.includes('@')) {
+    return res.status(400).json({ error: 'Valid email is required' });
+  }
+
+  // Verify API key exists
+  if (!process.env.BUTTONDOWN_API_KEY) {
+    console.error('BUTTONDOWN_API_KEY is not set');
+    return res.status(500).json({ error: 'Server configuration error' });
   }
 
   try {
@@ -19,26 +28,22 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email_address: email,
-        tags: ['waitlist'],
+        email_address: email,   // NOT "email" — this changed in API version 2024-07-01
       }),
     });
 
     const data = await response.json();
+    console.log('Buttondown response:', response.status, JSON.stringify(data));
 
-    if (response.ok || response.status === 201) {
-      return res.status(200).json({ success: true, message: "You're on the list!" });
+    if (!response.ok) {
+      return res.status(response.status).json({
+        error: data.detail || data.code || 'Subscription failed',
+      });
     }
 
-    // Already subscribed is still a success from user's perspective
-    if (response.status === 400 && JSON.stringify(data).includes('already')) {
-      return res.status(200).json({ success: true, message: "You're already on the list!" });
-    }
-
-    return res.status(400).json({ error: 'Could not subscribe. Please try again.' });
-
+    return res.status(201).json({ success: true });
   } catch (error) {
-    console.error('Buttondown API error:', error);
-    return res.status(500).json({ error: 'Something went wrong. Please try again.' });
+    console.error('Buttondown API error:', error.message);
+    return res.status(500).json({ error: 'Internal server error' });
   }
 }
